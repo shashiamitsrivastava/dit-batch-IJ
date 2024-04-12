@@ -1,0 +1,29 @@
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> bigList= new ArrayList<>(); 
+        helper(nums, 0, new ArrayList<Integer>()
+        , bigList);
+        return bigList;
+    }
+    void helper(int nums[], int index, List<Integer> smallList,
+     List<List<Integer>> bigList){
+        // 5. fill smallList in bigList
+        bigList.add(new ArrayList<Integer>(smallList));
+        // 1. loop 
+        for(int i = index ; i<nums.length; i++){
+            // check value exist in a smallList or Not
+            if(!smallList.contains(nums[i])){
+                // 3. now add nums in smallList
+                smallList.add(nums[i]);
+                // 2. Recursion Call
+                helper(nums, i, smallList, bigList); 
+                // i will be increment only once stack fall, it means for 
+                // next recursion call index will be pass as incrmented value
+                //4. undo the last change
+                smallList.remove(smallList.size()-1);
+            }
+              
+        }
+
+     }
+}
