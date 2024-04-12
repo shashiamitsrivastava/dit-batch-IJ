@@ -1,0 +1,22 @@
+class Solution {
+    public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> bigList = new ArrayList<>();
+        helper(n, k, new ArrayList<Integer>(), bigList, 1);
+        return bigList;
+    }
+    void helper(int n, int k, List<Integer> smallList,
+     List<List<Integer>> bigList, int start){
+        // Base Case
+        if(smallList.size()==k){
+            bigList.add(new ArrayList<Integer>(smallList));
+            return ; 
+        }
+        for(int i = start; i<=n; i++){
+            if(!smallList.contains(i)){
+                smallList.add(i);
+                helper(n,k, smallList, bigList, i);
+                smallList.remove(smallList.size()-1);
+            }
+        }
+     }
+}
