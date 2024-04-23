@@ -1,0 +1,32 @@
+
+Class Student
+
+Rollno , name , 3 subject marks (array)
+
+Compute
+
+Total Marks
+
+Percentage
+
+Grade
+
+
+
+Student Report Card print
+
+
+
+1. Good Encapsulation
+
+2. Setter/Getter
+
+3. Constructor call
+
+4. Class Name, Method Name (Noun, verb)
+
+5. SRP
+
+6. DRY
+
+7. This use
