@@ -1,0 +1,20 @@
+two classes want to talk to each other.
+
+a) IS - a (Inheritance Based) (Parent / Child Relationship) 
+* Code Reuse
+* Polymorphism - One thing having several forms
+** Overriding example of Polymorphism
+b) Has - a (Object Create and use it ) - Usage Based Relationship
+
+Customer 
+Account
+
+SavingAccount is a Account
+HomeLoan is a Loan
+
+SilverCard is a Card
+
+Customer has a Account
+Student has a Course
+Employee has a Dept
+
