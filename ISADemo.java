@@ -8,54 +8,54 @@
 // public - with in the package, outside the package
 // Note : no global scope is exist in Java
 
-abstract class Loan{
-    abstract void computeEMI();
-    void loanApprove(){
+// abstract class Loan{
+//     abstract void computeEMI();
+//     void loanApprove(){
 
-    }
-    abstract void roi();
-    abstract void rulesReg();
-}
-class HomeLoan extends Loan{
+//     }
+//     abstract void roi();
+//     abstract void rulesReg();
+// }
+// class HomeLoan extends Loan{
 
-    @Override
-    void computeEMI() {
+//     @Override
+//     void computeEMI() {
         
-    }
+//     }
 
-    @Override
-    void roi() {
+//     @Override
+//     void roi() {
        
-    }
+//     }
 
-    @Override
-    void rulesReg() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'rulesReg'");
-    }
+//     @Override
+//     void rulesReg() {
+//         // TODO Auto-generated method stub
+//         throw new UnsupportedOperationException("Unimplemented method 'rulesReg'");
+//     }
 
-}
-class EducationLoan extends Loan{
+// }
+// class EducationLoan extends Loan{
 
-    @Override
-    void computeEMI() {
-        // TODO Auto-generated method stub
+//     @Override
+//     void computeEMI() {
+//         // TODO Auto-generated method stub
         
-    }
+//     }
 
-    @Override
-    void roi() {
-        // TODO Auto-generated method stub
+//     @Override
+//     void roi() {
+//         // TODO Auto-generated method stub
         
-    }
+//     }
 
-    @Override
-    void rulesReg() {
-        // TODO Auto-generated method stub
+//     @Override
+//     void rulesReg() {
+//         // TODO Auto-generated method stub
         
-    }
+//     }
 
-}
+// }
 
 abstract class Account{
     int id; // default scope
