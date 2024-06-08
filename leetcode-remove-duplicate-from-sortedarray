@@ -1,0 +1,16 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        // Maintain 2 Pointers
+        // 1. writer pointer (i will keep move only when reader and writer values are not same)
+        int writer =0;
+        // reader pointer (keep moving)
+        int reader = 1;
+        for(; reader<nums.length; reader++){
+            if(nums[writer]!=nums[reader]){
+                writer++;
+                nums[writer] = nums[reader];
+            }
+        }
+        return writer + 1; // size of unique elements
+    }
+}
