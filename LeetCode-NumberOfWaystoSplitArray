@@ -1,0 +1,36 @@
+class Solution {
+    public int waysToSplitArray(int[] nums) {
+        long entireSum = 0 ;
+        int count = 0;
+        for(int i : nums){
+            entireSum = entireSum + i;
+        }
+        // now remove the current every time from the entire sum
+        // and store the current sum in left sum
+        long leftSum = 0;
+        for(int i = 0; i<nums.length-1 ; i++){
+            leftSum = leftSum + nums[i]; // adding current sum
+            entireSum = entireSum - nums[i]; // remove the current sum
+            if(leftSum>=entireSum){
+                count++;
+            }
+        }
+        return count;
+
+        // create a prefix array (Approach - 1 ) TC O(N) and SC O(N)
+        // long prefix[] = new long[nums.length];
+        // prefix[0] = nums[0];
+        // for(int i = 1; i<nums.length; i++){
+        //     prefix[i] = prefix[i-1] + nums[i];
+        // }
+        // int countValidSplits = 0;
+        // for(int i = 0; i<nums.length-1 ; i++){
+        //     long leftPart = prefix[i];
+        //     long rightPart = prefix[prefix.length-1] - prefix[i];
+        //     if(leftPart>=rightPart){
+        //         countValidSplits++;
+        //     }
+        // }
+        // return countValidSplits;
+    }
+}
