@@ -1,0 +1,41 @@
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        /*
+        Keypoints - fill the merge result in num1 on nth 0 places
+        */
+        // Approach - 1
+        // for(int i = 0; i<n ; i++){
+        //     nums1[m + i] = nums2[i]; // Copy on nth
+        // }
+        // Arrays.sort(nums1); // sort the array
+        // Approach - 2 (Three Pointer Approach)
+        int reader1 = m-1;
+        int reader2 = n-1;
+        int writer = (m+n)-1;
+        // Loop till writer will be reach to the 0th index
+        while(writer>=0){
+            // check reader1 or reader2 is not ended.
+            if(reader1>=0 && reader2>=0){
+                if(nums1[reader1]>nums2[reader2]){
+                    nums1[writer] = nums1[reader1];
+                    reader1--;
+                }
+                else{
+                    nums1[writer] = nums2[reader2];
+                    reader2--;
+                }
+               
+            }
+            // either of array is not exhausted
+            // else if(reader1>=0){
+            //     nums1[writer] = nums1[reader1];
+            //     reader1--;
+            // }
+            else if(reader2>=0){
+                nums1[writer] = nums2[reader2];
+                reader2--;
+            }
+             writer--;
+        }
+    }
+}
