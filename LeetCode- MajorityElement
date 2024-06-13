@@ -1,0 +1,56 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        // Approach - 1 Brute Force 
+        // for(int val : nums){
+        //     int count = 0;
+        //     for(int val2 : nums){
+        //         if(val == val2){
+        //             count++;
+        //         }
+        //     }
+        //     if(count>nums.length/2){
+        //         return val; 
+        //     }
+        // }
+        // return -1;
+        // Approach - 2 Hashing
+        // HashMap<Integer, Integer> map = new HashMap<>();
+        // for(int val : nums){
+        //     Integer count = map.get(val); // map.get(key)
+        //     if(count!=null){
+        //         count++;
+        //         map.put(val, count);
+        //     } 
+        //     else{
+        //         count = 1;
+        //         map.put(val, count);
+        //     }
+        //     if(count>nums.length/2){
+        //         return val;
+        //     }
+
+        // }
+        // Approach - 3 Sorting
+        // Arrays.sort(nums);
+        // return nums[nums.length/2];
+        //return -1;
+
+        // Approach - 4
+        int me = 0;
+        int count = 0;
+        for(int val : nums){
+            if(count ==0){
+                me = val; 
+                count++;
+            }
+            else if(me == val){
+                count++;
+            }
+            else{
+                count--;
+            }
+        }
+        return me;
+
+    }
+}
