@@ -1,0 +1,29 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        // Approach - 1 Brute Force Solution
+        /*int maxProfit = 0;
+        for(int buyDay = 0; buyDay<prices.length; buyDay++){
+            for(int sellDay = buyDay + 1; sellDay<prices.length; sellDay++){
+                int profit = prices[sellDay] - prices[buyDay];
+                if(profit>maxProfit){
+                    maxProfit = profit;
+                }
+            }
+        }
+        return maxProfit; */
+        // Approach - 2 Better Solution
+        // Maintain LowPrice (Min Value)
+        int lowBuyPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+        for(int i = 0; i<prices.length ; i++){
+            if(prices[i]<lowBuyPrice){
+                lowBuyPrice = prices[i];
+            }
+            int profit = prices[i] - lowBuyPrice;
+            if(profit>maxProfit){
+                maxProfit = profit;
+            }
+        }
+        return maxProfit;
+    }
+}
