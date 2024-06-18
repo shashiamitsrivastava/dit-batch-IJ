@@ -1,0 +1,35 @@
+class Solution {
+    public int countNegatives(int[][] grid) {
+        // int count = 0;
+        // // Approach-1 Brute Force
+        // for(int rows[] : grid){
+        //     for(int val : rows){
+        //         if(val<0){
+        //             count++;
+        //         }
+        //     }
+        // }
+        // return count;
+
+        // Approach - 2 Using Binary Search
+        int count  = 0;
+        
+        int colsLen = grid[0].length;
+       
+        for(int rows[] : grid){
+            int left = 0;
+             int right = colsLen -1;
+             while(left<=right){
+                int mid = (right + left)/2;
+                if(rows[mid]<0){
+                    right = mid - 1;
+                }
+                else{
+                    left = mid + 1;
+                }
+             }
+             count  = count + (colsLen - left);
+        }
+        return count;
+    }
+}
