@@ -1,0 +1,15 @@
+class Solution {
+    
+    public static long pairWithMaxSum(long arr[], long N)
+    {
+        long maximumSum = Long.MIN_VALUE;
+        // Your code goes here
+        for(int i = 0; i<N-1; i++){
+            long sum = arr[i] + arr[i+1];
+            if(sum>maximumSum){
+                maximumSum = sum;
+            }
+        }
+        return maximumSum;
+    }
+}
