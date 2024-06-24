@@ -1,0 +1,31 @@
+class Solution
+{
+    ArrayList<Integer> countDistinct(int arr[], int n, int k)
+    {
+        ArrayList<Integer> result = new ArrayList<>();
+        // Distinct or Duplicate (Count / Hashing)
+        HashMap<Integer, Integer> map = new HashMap<>();
+        // code here 
+        // 1st window
+        for(int i = 0; i<k ; i++){
+            map.put(arr[i], map.getOrDefault(arr[i], 0 )+1);
+        }
+        result.add(map.size());
+        // Remaining Window
+        for(int i = k ; i<n ; i++){
+            // Remove the first element from the window
+            // Already Count it , found only once (just remove it)
+            if(map.get(arr[i-k])==1){
+                map.remove(arr[i-k]);
+            }
+            else{ // if found more than one time then just decrease the frequency count
+                map.put(arr[i-k], map.get(arr[i-k])-1);
+            }
+            // Add the New Element at the end
+            map.put(arr[i], map.getOrDefault(arr[i], 0 )+1);
+             result.add(map.size());
+        }
+        return result;
+    }
+}
+
