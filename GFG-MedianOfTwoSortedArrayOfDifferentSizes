@@ -1,0 +1,43 @@
+class GFG 
+{ 
+    static double medianOfArrays(int n, int m, int a[], int b[]) 
+    {
+        // Your Code Here
+        int result [] = new int[n + m];
+        // Traverse the a and b array and put it in result array
+        int i = 0;
+        int j = 0; 
+        int index = 0;
+        while(i<n && j<m){
+            if(a[i]<b[j]){
+                result[index] = a[i];
+                i++;
+            }
+            else{
+                result[index] = b[j];
+                j++;
+            }
+            index++;
+        }
+        // Fill the Remaining Elements
+        while(i<n){
+            result[index] = a[i];
+            i++;
+            index++;
+        }
+         while(j<m){
+            result[index] = b[j];
+            j++;
+            index++;
+        }
+        // compute the Median
+        if(index % 2==0){
+            return (result[result.length/2-1] + result[result.length/2])/2.0;
+        }
+        else{
+            return result[result.length/2];
+        }
+        
+        
+    }
+}
