@@ -1,0 +1,28 @@
+class Solution {
+    public int[] topK(int[] nums, int k) {
+        int result[] = new int[k];
+        // Code here
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i = 0; i<nums.length; i++){
+           map.put(nums[i], map.getOrDefault(nums[i], 0 )+1);
+        }
+        // fill the result based on top frequency (Sort)
+        ArrayList<Map.Entry<Integer, Integer>> l = new ArrayList<>(map.entrySet());
+        // l.add(10);
+        // l.add(20);
+        // l.add(1);
+        // Collections.sort(l);
+        Collections.sort(l, (first, second)->
+        first.getValue().equals(second.getValue())?second.getKey().compareTo(first.getKey()):
+        second.getValue().compareTo(first.getValue()));
+        int i = 0;
+        for(Map.Entry<Integer, Integer> m : l){
+            int key = m.getKey();
+            if(i<k){
+                result[i] = key;
+                i++;
+            }
+        }
+        return result;
+    }
+}
