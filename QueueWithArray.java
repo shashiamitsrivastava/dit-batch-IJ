@@ -12,6 +12,7 @@ class Queue{
         return size;
     }
     boolean isEmpty(){
+        System.out.println("Size is "+size);
         return size == 0;
     }
     int getFront(){
