@@ -1,0 +1,18 @@
+class GfG
+{
+    public int SumofLeafNodes(Node root)
+    {
+        // Base case
+        if(root == null){
+            return 0;
+        }
+        // Leaf Node
+        if(root.left == null && root.right == null){
+            return root.data;
+        }
+        // your code here
+        int leftSum = SumofLeafNodes(root.left);
+        int rightSum = SumofLeafNodes(root.right);
+        return leftSum + rightSum;
+    }
+}
