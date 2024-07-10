@@ -1,0 +1,20 @@
+class Solution {
+    // 3rd Approach
+    public boolean hasPathSum(TreeNode root, int targetSum) {
+        // Tree Empty
+        if(root == null){
+            return false;
+        }
+        // On each node i minus the node value from the targetSum
+        targetSum = targetSum - root.val;
+        // Leaf Node
+        if(root.left == null && root.right == null){
+            return targetSum == 0;
+        }
+        // move to the left
+       boolean left =  hasPathSum(root.left, targetSum);
+        // move to the right
+        boolean right =  hasPathSum(root.right, targetSum);
+        return left || right;
+    }
+}
