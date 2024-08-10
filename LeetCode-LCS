@@ -1,0 +1,90 @@
+class Solution {
+    public int longestCommonSubsequence(String text1, String text2) {
+        if(text1.length() ==0 || text2.length()==0){
+            return 0;
+        }
+        int count = 0;
+        if(text1.charAt(0) == text2.charAt(0)){
+            count = 1 + longestCommonSubsequence(text1.substring(1), text2.substring(1));
+        }
+        else{
+            int result1 = longestCommonSubsequence(text1.substring(1), text2);
+            int result2 = longestCommonSubsequence(text1, text2.substring(1));
+            count = Math.max(result1, result2);
+
+        }
+        return count;
+    }
+}
+
+// LCS Using Memoization
+class Solution {
+     int lcsMemoization(String X, String Y, int m, int n, int dp[][]) { 
+            // base case 
+            if (m == 0 || n == 0) { 
+                return 0; 
+            } 
+
+            // if the same state has already been 
+            // computed 
+            if (dp[m - 1][n - 1] != -1) { 
+                return dp[m - 1][n - 1]; 
+            } 
+
+            // if equal, then we store the value of the 
+            // function call 
+            if (X.charAt(m - 1) == Y.charAt(n - 1)) { 
+
+                // store it in arr to avoid further repetitive 
+                // work in future function calls 
+                dp[m - 1][n - 1] = 1 + lcsMemoization(X, Y, m - 1, n - 1, dp); 
+
+                return dp[m - 1][n - 1]; 
+            } else { 
+
+                // store it in arr to avoid further repetitive 
+                // work in future function calls 
+                dp[m - 1][n - 1] = Math.max(lcsMemoization(X, Y, m, n - 1, dp), 
+                        lcsMemoization(X, Y, m - 1, n, dp)); 
+
+                return dp[m - 1][n - 1]; 
+            } 
+        } 
+    public int longestCommonSubsequence(String text1, String text2) {
+        int cache [][] = new int[text1.length()][text2.length()];
+         // Initialize the cache with -1
+        for (int i = 0; i < text1.length(); i++) {
+            for (int j = 0; j < text2.length(); j++) {
+                cache[i][j] = -1;
+            }
+        }
+        return lcsMemoization(text1, text2,text1.length(), text2.length(), cache);
+    }
+}
+
+// LCS Using Tabulation
+
+class Solution {
+     int lcsDP(String first, String second , int m , int n) {
+        int matrix[][] = new int [m+1][n+1];
+        
+        for(int i = 0; i<=m ;i++) {
+            for(int j = 0; j<=n ; j++) {
+                if(i==0 || j==0) {
+                    matrix[i][j] = 0;
+                }
+                else
+                if(first.charAt(i-1) == second.charAt(j-1)) {   
+                    matrix[i][j] = matrix[i-1][j-1]+1;
+                }
+                else {
+                    matrix[i][j] = Math.max(matrix[i-1][j], matrix[i][j-1]);
+                }
+            }
+        }
+        return matrix[m][n];
+    }
+    public int longestCommonSubsequence(String text1, String text2) {
+        return lcsDP(text1, text2, text1.length(), text2.length());
+    }
+}
